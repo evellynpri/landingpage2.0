@@ -4,21 +4,45 @@ body {
     background: #3b4b67;
 }
 
+.layout {
+    display: grid;
+  grid-template-areas:
+    "cabecalho cabecalho"
+    "menu conteudo"
+    "rodape rodape";
+  grid-template-columns: 170px 1fr;
+  /*O grid template rows não faz diferença no meu código, 
+  já que a lading page possui uma organização de tamanhos variados no espaço de conteúdos*/
+  /*grid-template-rows: auto 1fr auto;*/
+  min-height: 100vh;
+  gap: 0px;
+}
+
 header {
     display: flex;
+    grid-area: cabecalho;
     align-items: center;
     justify-content: space-between;
     padding: 30px;
     text-align: center;
     background-color: #162136;
-    box-shadow: 0px 10px 20px #162136;
+}
+
+nav {
+    grid-area: menu;
+    background-color: #1c2b46;
+}
+
+h3 {
+    color: #bbae81;
 }
 
 nav ul {
     display: flex;
+    flex-direction: column;
     gap: 5px;
     list-style: none;
-    padding: 0;
+    padding: 20px;
     margin: 0;
 }
 
@@ -113,6 +137,7 @@ h2 {
 }
 
 footer {
+    grid-area: rodape;
     display: flex;
     align-items: center;
     padding: 35px;
@@ -147,4 +172,16 @@ footer p a {
     font-size: 20px;
     line-height: 1.5;
     font-family: perpetua, serif;
+}
+
+@media (max-width: 768px) {
+    .layout {
+        grid-template-areas:
+            "cabecalho"
+            "menu"
+            "principal"
+            "rodape";
+
+        grid-template-columns: 1fr;
+    }
 }
